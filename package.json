@@ -1,0 +1,70 @@
+{
+  "name": "educate-our-children-backend",
+  "version": "1.0.0",
+  "description": "we teach children",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "NODE_ENV=production nodemon --exec babel-node ./src/index.js",
+    "start:heroku": "NODE_ENV=production npm run db-migrate && NODE_ENV=production babel-node ./src/index.js",
+    "dev": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
+    "db-migrate": "npx sequelize db:migrate",
+    "db-undo-migration": "npx sequelize db:migrate:undo:all",
+    "db-seed-test": "NODE_ENV=testing npx sequelize-cli db:seed:undo:all && NODE_ENV=testing sequelize db:seed:all",
+    "db-seed-dev": "npx sequelize-cli db:seed:undo:all && npx sequelize db:seed:all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jajabenit250/soma.git"
+  },
+  "author": "benithavugimana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jajabenit250/soma"
+  },
+  "homepage": "",
+  "dependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
+    "@babel/runtime": "^7.7.6",
+    "@hapi/joi": "^17.0.0",
+    "@hapi/joi-date": "^2.0.1",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.0",
+    "faker": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.1.0",
+    "moment": "^2.24.0",
+    "node-mocks-http": "^1.8.1",
+    "nodemailer": "^6.4.2",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-google-oauth20": "^2.0.0",
+    "path": "^0.12.7",
+    "pg": "^7.14.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.2",
+    "sequelize-cli": "^5.5.1",
+    "sinon": "^7.5.0",
+    "sinon-chai": "^3.3.0",
+    "nodemon": "^2.0.1"
+  },
+  "devDependencies": {
+    "@passport-next/chai-passport-strategy": "^1.1.0",
+    "eslint": "^6.7.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
