@@ -67,34 +67,6 @@ class UserController {
     return response.errorMessage(res, updateUser.message, updateUser.status);
   }
 
- 
-  static async googleAndFacebookPlusAuth(accessToken, refreshToken, profile, done) {
-    try {
-      const userData = {
-        firstName: profile.name.givenName,
-        lastName: profile.name.familyName,
-        email: profile.emails[0].value,
-        authtype: profile.provider,
-        profileImage: profile.photos[0].value,
-        isVerified: true,
-      };
-      const [userCreated] = await UserServices.findOrCreateUser(userData);
-      done(null, userCreated.dataValues);
-    } catch (error) {
-      done(error, false);
-    }
-  }
-
-
-  static async authGoogleAndFacebook(req, res) {
-    const {
-      email, isVerified, id, authtype
-    } = req.user;
-    const token = GenerateToken({ email, isVerified, id });
-    await UserServices.updateUser(req.user.email, { token });
-    return response.successMessage(res, `user logged in successfully with ${authtype}`, 200, token);
-  }
-
 
   static resetPassword(req, res) {
     if (req.body.password !== req.body.confirmPassword) {
